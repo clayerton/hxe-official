@@ -1,0 +1,354 @@
+
+<!doctype html>
+<html class="no-js" lang="zh-CN" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title> - Netafim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    
+<script>
+    dataLayer = [{
+            'uaPropertyId' : 'UA-111744706-6',
+                            }];
+</script>
+
+    <script data-cookieconsent="ignore">
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer', 'GTM-PK2T7W');
+    </script>
+
+
+
+    
+<link rel='stylesheet' type='text/css' data-f-resource='EPiServerForms.css' href='static/css/WebResource.css'>
+
+<script type="text/javascript">
+var epi = epi||{}; epi.EPiServer = epi.EPiServer||{}; epi.EPiServer.Forms = epi.EPiServer.Forms||{};
+                    epi.EPiServer.Forms.InjectFormOwnJQuery = true;epi.EPiServer.Forms.OriginalJQuery = typeof jQuery !== 'undefined' ? jQuery : undefined;
+</script>
+<script type="text/javascript" src="static/js/WebResource.js"></script>
+<script type="text/javascript">
+/*
+This EPiServerForms_prerequisite.js TEMPLATE will be compiled with serverside values and injected into ViewMode page
+We reuse the existed global var epi from EPiServer CMS, if any. It will init/grab the epi object, and init epi.EPiServer.Forms object
+*/
+
+// (by default) Forms's jQuery will be injected right before this file. From now on, we refer Forms own jQuery as $$epiforms.
+// after this code, the object $ and jQuery will revert back to its original meaning in original library (Alloy jQuery or other lib).
+
+// Our clients' sites may include their own Jquery version (e.g. a higher version for some special functionalities), which leads to unexpected conflicts with ours.
+// To avoid this, we use jQuery.noConflict()  to set up $$epiforms as an allias for our jquery and then, revert Jquery allias to clients' by using
+// epi.EPiServer.Forms.OriginalJQuery whose value is set up as Jquery at the beginning in FormBlockController.
+// This also allows us to extend our own Jquery's functionalities without causing further conflicts.
+
+var $$epiforms = epi.EPiServer.Forms.InjectFormOwnJQuery ? jQuery.noConflict() : jQuery;
+if (epi.EPiServer.Forms.OriginalJQuery) {
+    jQuery = epi.EPiServer.Forms.OriginalJQuery;
+    delete epi.EPiServer.Forms.OriginalJQuery;
+}
+(function () {
+    var externalScript = ["/Module/Projects/Netafim/Corporate/Components/Forms/Validation/Phone/Views/internationalPhoneNumberValidator.js","/util/EPiServer.Forms.Samples/ClientResources/ViewMode/jquery-ui.modified.js","/util/EPiServer.Forms.Samples/ClientResources/ViewMode/EPiServerFormsSamples.js"],
+        externalCss = ["/util/EPiServer.Forms.Samples/ClientResources/ViewMode/EPiServerFormsSamples.css","/util/EPiServer.Forms.Samples/ClientResources/ViewMode/jquery-ui.min.css","/util/EPiServer.Forms.Samples/ClientResources/ViewMode/jquery-ui.structure.min.css","/util/EPiServer.Forms.Samples/ClientResources/ViewMode/jquery-ui.theme.min.css"];
+
+    if (epi.EPiServer.Forms.ExternalScriptSources) {
+        externalScript = epi.EPiServer.Forms.ExternalScriptSources.concat(externalScript);
+        // Remove duplicate items
+        externalScript = externalScript.filter(function (value, index, self) {
+            return self.indexOf(value) === index;
+        });
+    }
+    if (epi.EPiServer.Forms.ExternalCssSources) {
+        externalCss = epi.EPiServer.Forms.ExternalCssSources.concat(externalCss);
+        // Remove duplicate items
+        externalCss = externalCss.filter(function (value, index, self) {
+            return self.indexOf(value) === index;
+        });
+    }
+
+    $$epiforms.extend(true, epi.EPiServer, {
+        CurrentPageLink: "7",
+        CurrentPageLanguage: "zh-CN",
+        CurrentFormLanguage: "zh-CN",
+        Forms: {
+            Utils: {}, Data: {}, Extension: {}, Validation: {}, Navigation: {}, Dependency: {},
+            $: $$epiforms,  // save our own link to our own jQuery
+            ThrottleTimeout: 500,  // miliseconds
+            ExternalScriptSources: externalScript,
+            ExternalCssSources: externalCss,
+            UploadExtensionBlackList: "asp,aspx,asa,ashx,asmx,bat,chm,class,cmd,com,config,dll,exe,hta,htr,htw,jse,json,lnk,mda,mdb,msc,msh,pif,printer,ps1,ps2,reg,rem,scf,scr,sct,shtm,shtml,soap,stm,svc,url,vb,vbe,vbs,vsix,ws,wsc,wsf,wsh,xamlx,htm,html,js,jar",
+            Messages: {"viewMode":{"malformStepConfiguration":"表单步骤配置不当。 某些步骤附属于页面，而另一些步骤则不附属于页面，或附属于带非公开 URL 的内容。","commonValidationFail":"此元素值无效。"},"fileUpload":{"overFileSize":"上传的文件尺寸应小于 {0} MB。","invalidFileType":"上传文件格式不允许或不支持。","postedFile":"（以前发布的文件: {0}）"}},
+            LocalizedResources: {"samples":{"criteria":{"formcriterion":{"category":"EPiServer 表单","displayname":"已提交表单","description":"检查访问者提交的表单。","submissionstatus":"提交状态","selectedform":"选中的表单"},"submittedvaluecriterion":{"category":"EPiServer 表单","displayname":"提交的表单值","description":"检查访问者的表单提交值。","selectedform":"选中的表单","selectedfield":"选中的字段","condition":"条件","value":"值"}},"datetimepickertype":{"datepicker":"日期选择器","timepicker":"时间选择器","datetimepicker":"日期时间选择器"},"confirmationdialog":{"title":"摘要","buttons":{"ok":"确定","cancel":"取消"}},"editview":{"requirejs":"需要 JavaScript 才能显示 reCAPTCHA。"},"messages":{"imagesubmitbutton":{"initializationmessage":"这是一个图像提交按钮。请为其选择一个图像。"}}},"viewmode":{"addresselement":{"addresslabel":"地址","streetlabel":"街道","citylabel":"城市","statelabel":"状态","postallabel":"邮编","countrylabel":"国家"},"stepnavigation":{"previous":"上一步","next":"下一步","page":"步骤"},"untitled":"无标题","selection":{"selectanoption":"-- 选择一个选项 --","selectoptions":"-- 选择多个选项 --"},"reset":"重置表单","submit":"提交","refreshcaptcha":"刷新验证码","captchalabel":"单词验证","malformstepconfigruation":"表单步骤配置不当。 某些步骤附属于页面，而另一些步骤则不附属于页面，或附属于带非公开 URL 的内容。","commonvalidationfail":"此元素值无效。","readonlymode":"只读模式。 未保存提交数据。","submissionactors":{"savedatatostorage":{"error":"出现错误。有关更多信息，请联系管理员。"}}},"validators":{"episerver.forms.samples.implementation.validation.datetimevalidator":{"displayname":"日期时间验证器","message":"以 {0} hh:mm 格式输入有效的日期时间"},"episerver.forms.samples.implementation.validation.datevalidator":{"displayname":"日期验证器","message":"以 {0} 格式输入有效日期"},"episerver.forms.samples.implementation.validation.timevalidator":{"displayname":"时间验证器","message":"输入有效时间，例如上午 10:20。"},"episerver.forms.samples.implementation.validation.recaptchavalidator":{"displayname":"验证码验证器","message":"无效的验证码值。"},"episerver.forms.implementation.validation.datetimerangevalidator":{"displayname":"日期时间范围","message":"请输入有效的日期时间范围。"},"episerver.forms.implementation.validation.addressvalidator":{"displayname":"地址","message":"请输入有效地址。"},"episerver.forms.implementation.validation.requiredvalidator":{"displayname":"必需","message":"此字段为必填项。"},"episerver.forms.implementation.validation.regularexpressionvalidator":{"displayname":"常规表达","message":"该字段必须为“{0}”格式。"},"episerver.forms.implementation.validation.captchavalidator":{"displayname":"验证码","message":"输入您在图片中看到的字符。"},"episerver.forms.implementation.validation.allowedextensionsvalidator":{"displayname":"允许的扩展","message":"上传文件格式不允许或不支持。","allowedextensionsmessage":"上传文件格式不允许或不支持。 文件格式应为： {0}."},"episerver.forms.implementation.validation.maxfilesizevalidator":{"displayname":"文件最大尺寸","message":"上传的文件尺寸应小于 {0} MB。"},"episerver.forms.implementation.validation.emailvalidator":{"displayname":"电子邮件","message":"输入有效的电子邮件地址。"},"episerver.forms.implementation.validation.urlvalidator":{"displayname":"Url","message":"输入有效 URL。"},"episerver.forms.implementation.validation.dateddmmyyyyvalidator":{"displayname":"日期（日/月/年）","message":"以日/月/年格式输入日期。"},"episerver.forms.implementation.validation.datemmddyyyyvalidator":{"displayname":"日期（月/日/年）","message":"以月/日/年格式输入日期。"},"episerver.forms.implementation.validation.dateyyyymmddvalidator":{"displayname":"日期（年/月/日）","message":"以年/月/日格式输入日期。"},"episerver.forms.implementation.validation.numericvalidator":{"displayname":"数值","message":"输入有效数字。"},"episerver.forms.implementation.validation.integervalidator":{"displayname":"整数","message":"输入有效整数。"},"episerver.forms.implementation.validation.positiveintegervalidator":{"displayname":"正整数","message":"输入有效正整数。"},"elementselfvalidator":{"unexpectedvalueisnotaccepted":"不接受意外值。"},"custommessage":{"resetbuttonlabel":"重置为默认值","errormessagelabel":"错误消息 "},"netafim.webplatform.web.features.formelementblocks.validation.internationalphonenumbervalidator":{"displayname":"Phone number","message":"Please enter a valid phone number including a country code"},"fileuploadelementselfvalidator":{"multiplefilenotallowed":"Not allowed to upload multiple files."}},"conditioncombination":{"all":"全部","any":"任意"},"satisfiedaction":{"hide":"已隐藏","show":"已显示"},"contenttypescomponent":{"title":"表单元素","description":"显示 EPiServer 表单的所有内容类型"},"formscomponent":{"title":"表单","description":"为网站管理表单","command":{"create":{"label":"新建表单"},"viewdata":{"label":"表单提交"}},"messages":{"nocontent":"此文件夹不包含任表单。"}},"formdataview":{"name":"表单提交","description":"查看表单提交","heading":"表单提交","begindate":"起始日期","enddate":"截止日期","search":"搜索","nodata":"没有数据","export":"导出为 ...","exportasxml":"XML","exportasxmldesc":"将表单数据导出为 XML 格式","exportascsv":"CSV","exportascsvdesc":"将表单数据导出为 CSV 格式","exportasjson":"JSON","exportasjsondesc":"将表单数据导出为 JSON 格式","finalizedonly":"仅完成","deleteselecteditems":"删除","exportasxlsx":"XLSX","exportasxlsxdesc":"将表单数据导出为 XLSX 格式","selectalltooltip":"全选","deselectalltooltip":"取消全选","deleteconfirmation":"您要删除选中的商品吗？ 此操作无法撤销。","nopostid":"没有可删除的发布 Id。","couldnotgetassociateform":"无法获得相关表单。","deletesuccessful":"成功删除发布数据。","accessdenied":"您没有查看该数据的权限。","submittime":"时间","submituser":"由用户","hostedpage":"提交自","finalizedsubmission":"完成","selectioninfo":"所有 <b>${0}</b> 记录都被选中。 ","extraselectionlink":"选择所有 <b>${0}</b> 记录","clearselectionlink":"清除选定内容","filterdata":"过滤","searchallcolumns":"全部列","exportasdecryptedcsv":"已解密 CSV","exportasdecryptedcsvdesc":"解密并以 CSV 格式导出表格数据"},"formscontentarea":{"emptyactions":{"actions":{"createnewformselement":"创建一个新元素"},"template":"您可以将表单元素拖拽至此，或 {createnewformselement}。","templatewithoutcreate":"您可以将内容拖拽至此。"}},"fieldselector":{"title":"选择相关字段"},"submissionactors":{"episerver.forms.implementation.actors.callwebhookaftersubmissionactor":{"displayname":"表单提交后触发 webhook。"},"episerver.forms.implementation.actors.sendemailaftersubmissionactor":{"displayname":"表单提交后发送电子邮件"}},"visitordatasources":{"episerver.forms.implementation.visitordata.ipaddressvisitordatasource":{"displayname":"IP 地址"},"episerver.forms.implementation.visitordata.geovisitordatasource":{"displayname":"地理位置","properties":{"city":"城市","country_code":"国家代码","country_name":"国家名称","ip":"IP","latitude":"纬度","longitude":"经度","region_code":"地区代码","region_name":"地区名称","time_zone":"时间区域","zip_code":"邮政编码"}},"episerver.forms.implementation.visitordata.profilevisitordatasource":{"displayname":"简介","properties":{"address":"地址","zipcode":"邮政编码","locality":"位置","email":"电子邮件","firstname":"名字","lastname":"姓氏","language":"语言","country":"国家","company":"公司","title":"标题"}},"episerver.forms.implementation.visitordata.useragentvisitordatasource":{"displayname":"用户代理","properties":{"ismobiledevice":"移动","useragent":"用户代理"}},"episerver.forms.implementation.visitordata.visitorgroupvisitordatasource":{"displayname":"访问者组","properties":{"id":"Id","name":"名称"}},"youmustselectvalueforhiddenvisitor":"您必须为所选的访问者数据类型选择一个值。"},"messages":{"fileupload":{"overfilesize":"上传的文件尺寸应小于 {0} MB。","invalidfiletype":"上传文件格式不允许或不支持。","postedfile":"（以前发布的文件: {0}）"},"formsubmission":{"outdatedforminit":"您查看表单的当前会话已过期。 刷新页面以继续。","requirelogin":"您必须登录以上传此表单。 如果您已登录但仍无法发布，请确保已禁用您浏览器中的“不追踪”设置。","denymultisubmit":"您已上传过该表单。","submitsuccess":"表单已成功提交。","validationfailformat":"“{0}”字段验证失败： {1}","thereisnoformguid":"上传数据失败：没有表单 Guid（全球唯一标识符）。","couldnotgetform":"上传数据失败：无法获取 Id = {0} 的表单。","submitcancelled":"技术信息： 上传过程已取消。 原因: ","formisrestricted":"无法提交表单。 您没有足够的权限。","formexpired":"无法提交表单。 表单已到期。","formdeleted":"无法提交表单。 表单已被删除。","submitnotsuccess":"提交失败。","sessionoff":"无法提交此表单，因为它不允许存储数据，且会话状态为关闭。"}},"dependcondition":{"notapplicable":"不适用","matchregularexpression":"与常规表达匹配","equals":"等于","notequals":"不等同","contains":"包含","notcontains":"不包含"},"imagechoiceitems":{"emptyactions":{"actions":{"createnewitem":"创建一个图片链接"},"template":"将图片内容拖拽至此。<br/>您也可以{createnewitem}。"},"menutooltip":"显示菜单"},"editview":{"elementdependant":"此字段依附于其他字段","retentionperiod":{"partial":"部分","finalized":"完成","default":"默认","keepforsomedays":"{0}天","customization":"定制（天）：","keepforever":"永久","validation":{"errormessage":{"long":"提交留存期字段必须是{0}至{1}间的整数{2}","short":"输入必须是{0}至间的整数{1}"}},"revision":{"warningmessage":"您的留存政策更改至少会影响{0}次提交"}},"notconfigured":"还未配置","insertplaceholder":"插入占位符","selectanitem":"选择项目","externalsystems":"外部系统字段映射","connecteddatasource":"连接至数据源","createemailtemplate":"创建电子邮件模板","editemailtemplate":"编辑电子邮件模板","addwebhook":"添加 webhook","editwebhook":"编辑 webhook","selectpage":"选择页面","usemanualinput":"使用手动输入","errorconditionalstepcannotcontainrequiredelement":"该表达步骤不应依赖于其他元素，因为它包含强制元素 [{0}]。","cannotbuildformmodel":"无法建立表单。 您不能将表单容器模块用作属性。 您只可以在内容区域递交表单。","resetconnecteddatasource":"重置"},"contentediting":{"fielddependency":{"condition":{"field":"字段","operator":"操作员","value":"值"},"invalidcondition":"此条件不再有效","conditiondialog":{"title":"条件详情"}},"optionitem":{"caption":"选择","value":"值","checked":"默认检查","containsinvalidcharacter":"不允许逗号（，）字符。"},"emailtemplateactor":{"fromemail":"发件人","fromemaildescription":"发件人电子邮件地址","toemails":"收件人","toemailsdescription":"收件人电子邮件地址，或带电子邮件地址的表单字段名称（用于确认邮件）","subject":"主题","subjectdescription":"电子邮件主题行。 您可以使用 #FIELDNAME# 插入来自表单的值。","body":"消息","bodydescription":"电子邮件正文。 您可以用 #FIELDNAME# 插入来自表单的值，或显示带 #SUMMARY 的表单字段摘要列表。","fromemailplaceholder":"someone@example.com","toemailsplaceholder":"address@example.com，...","subjectplaceholder":"输入电子邮件主题"},"webhookactor":{"url":"Webhook URL","urldescription":"Webhook URL 发送数据容载量至（http 或 https 协议）。","jsonformat":"以 JSON 格式发布数据"},"validation":{"circulardependency":"不允许循环依赖配置","greaterthanequaltoerrorformat":"{0} 必须 >= {1} 的值。","lessthanequaltoerrorformat":"{0} 必须 <= {1} 的值。","inrangeerrorformat":"“{0}”不是适用于 {1} 的有效值。 仅允许数字，而且 {1} 必须在 [{2} - {3}] 值的范围内。","stepinrangeerrorformat":"{0} 必须 >= 1 且 <= {2} - {1} 的值。","positiveinteger":"仅允许正数。"}}}
+        }
+    });
+})();
+
+</script>
+
+    
+<script type="text/javascript">var appInsights=window.appInsights||function(config){function t(config){i[config]=function(){var t=arguments;i.queue.push(function(){i[config].apply(i,t)})}}var i={config:config},u=document,e=window,o="script",s="AuthenticatedUserContext",h="start",c="stop",l="Track",a=l+"Event",v=l+"Page",r,f;setTimeout(function(){var t=u.createElement(o);t.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(t)});try{i.cookie=u.cookie}catch(y){}for(i.queue=[],r=["Event","Exception","Metric","PageView","Trace","Dependency"];r.length;)t("track"+r.pop());return t("set"+s),t("clear"+s),t(h+a),t(c+a),t(h+v),t(c+v),t("flush"),config.disableExceptionTracking||(r="onerror",t("_"+r),f=e[r],e[r]=function(config,t,u,e,o){var s=f&&f(config,t,u,e,o);return s!==!0&&i["_"+r](config,t,u,e,o),s}),i}({instrumentationKey:"5bb4d6ba-ce60-4a55-85ce-b16517ff0476",sdkExtension:"a"});window.appInsights=appInsights;appInsights.queue&&appInsights.queue.length===0&&appInsights.trackPageView();</script></head>
+<body class=" ">
+    <div class="wrapper wrapper--offset">
+        
+
+
+
+<div data-component-class="PopUpFrame" data-component-parm="{&quot;formId&quot;:&quot;232324&quot;}" data-webid="PopUpFrame"><div class="c-component is-boxed" data-component-class="FormContainer" data-component-parm="{&quot;isCompact&quot;:false,&quot;gtmFormCategory&quot;:&quot;&quot;}" data-webid="FormContainer">                <div class="o-wrapper ">
+                    <section class="o-container-block">
+                        <div class="o-container-block__wrapper">
+                            <div class="c-form-wrapper">
+                                
+
+    <form method="post" novalidate="novalidate" data-f-metadata="" enctype="multipart/form-data" class="EPiServerForms ValidationSuccess" data-f-type="form" id="3b52ff65-3391-4f07-9aff-2465feea29e0">
+
+    
+
+    
+    <script type="text/javascript" src="static/js/GetFormInitScript2.js"></script>
+
+    
+    <input type="hidden" class="Form__Element Form__SystemElement FormHidden FormHideInSummarized" name="__FormGuid" value="3b52ff65-3391-4f07-9aff-2465feea29e0" data-f-type="hidden" autocomplete="off">
+    <input type="hidden" class="Form__Element Form__SystemElement FormHidden FormHideInSummarized" name="__FormHostedPage" value="7" data-f-type="hidden" autocomplete="off">
+    <input type="hidden" class="Form__Element Form__SystemElement FormHidden FormHideInSummarized" name="__FormLanguage" value="zh-CN" data-f-type="hidden" autocomplete="off">
+    <input type="hidden" class="Form__Element Form__SystemElement FormHidden FormHideInSummarized" name="__FormCurrentStepIndex" value="0" data-f-type="hidden" autocomplete="off">
+    <input type="hidden" class="Form__Element Form__SystemElement FormHidden FormHideInSummarized" name="__FormSubmissionId" value="" data-f-type="hidden" autocomplete="off">
+    <input name="__RequestVerificationToken" type="hidden" value="0tEOJAmo0JgWcyfoOfd2SEkZAPcB-FQdUFFqjDSqZbBGcmmKUNWNDo4YZJogfH8T1hP97vDi0_9K87u3OENuSVJj0bBIvuBtBudlKuzmmAI1">
+
+    
+
+    
+    <div class="Form__Status">
+        <div role="alert" aria-live="polite" class="Form__Status__Message hide" data-f-form-statusmessage="">
+            
+        </div>
+    </div>
+
+    <div data-f-mainbody="" class="Form__MainBody">
+        
+        <section id="__field_" data-f-type="step" data-f-element-name="__field_" class="Form__Element FormStep Form__Element--NonData " data-f-stepindex="0" data-f-element-nondata="">
+            
+
+            <!-- Each FormStep groups the elements below it til the next FormStep -->
+            <div class="Form__Element FormTextbox ValidationRequired" data-f-element-name="__field_232329" data-f-type="textbox">
+    <label for="a99959dc-26ac-48ae-9ca7-d66587d526a1" class="Form__Element__Caption">姓 *</label>
+    <input name="__field_232329" id="a99959dc-26ac-48ae-9ca7-d66587d526a1" type="text" class="FormTextbox__Input" aria-describedby="__field_232329_desc" value="" required="" aria-required="true" data-f-datainput="" aria-invalid="false">
+    <span class="Form__Element__ValidationError" data-f-linked-name="__field_232329" data-f-validationerror="" id="__field_232329_desc" style="display:none"></span>
+    
+</div><div class="Form__Element FormTextbox ValidationRequired" data-f-element-name="__field_232328" data-f-type="textbox">
+    <label for="a8f28613-eb05-4354-b514-bab169c793ef" class="Form__Element__Caption">名 *</label>
+    <input name="__field_232328" id="a8f28613-eb05-4354-b514-bab169c793ef" type="text" class="FormTextbox__Input" aria-describedby="__field_232328_desc" value="" required="" aria-required="true" data-f-datainput="" aria-invalid="false">
+    <span class="Form__Element__ValidationError" data-f-linked-name="__field_232328" data-f-validationerror="" id="__field_232328_desc" style="display:none"></span>
+    
+</div><div class="Form__Element FormTextbox ValidationRequired" data-f-element-name="__field_232327" data-f-type="textbox">
+    <label for="61c27681-37e7-4521-9132-a7ce74946a8a" class="Form__Element__Caption">邮箱 *</label>
+    <input name="__field_232327" id="61c27681-37e7-4521-9132-a7ce74946a8a" type="text" class="FormTextbox__Input" aria-describedby="__field_232327_desc" value="" required="" aria-required="true" data-f-datainput="" aria-invalid="false">
+    <span class="Form__Element__ValidationError" data-f-linked-name="__field_232327" data-f-validationerror="" id="__field_232327_desc" style="display:none"></span>
+    
+</div><div class="Form__Element FormSelection ValidationRequired" data-f-element-name="__field_232330" data-f-type="selection">
+    <label for="3106e402-51f2-4c19-b4c2-ed2556e6e6b6" class="Form__Element__Caption">身份 *</label>
+    <select name="__field_232330" id="3106e402-51f2-4c19-b4c2-ed2556e6e6b6" required="" aria-required="true" data-f-datainput="" aria-describedby="__field_232330_desc" aria-invalid="false">
+        <option disabled="disabled" selected="selected" value="">请选择</option>
+        
+        <option value="Grower" data-f-datainput="">种植户</option>
+        
+        <option value="Other" data-f-datainput="">农业公司</option>
+        
+        <option value="Agri Investor" data-f-datainput="">农业投资者</option>
+        
+        <option value="Business Partner" data-f-datainput="">合作伙伴</option>
+        
+        <option value="Distributor" data-f-datainput="">经销商</option>
+        
+        <option value="Government" data-f-datainput="">政府人员</option>
+        
+        <option value="Journalist" data-f-datainput="">媒体人员</option>
+        
+        <option value="NGO" data-f-datainput="">非营利性组织</option>
+        
+        <option value="Researcher" data-f-datainput="">研究人员</option>
+        
+        <option value="Supplier" data-f-datainput="">供应商</option>
+        
+        <option value="Designer" data-f-datainput="">设计人员</option>
+        
+        <option value="Student" data-f-datainput="">学生</option>
+        
+        <option value="Other" data-f-datainput="">其他</option>
+        
+    </select>
+    <span class="Form__Element__ValidationError" data-f-linked-name="__field_232330" data-f-validationerror="" id="__field_232330_desc" style="display:none"></span>
+</div><div class="Form__Element FormSelection ValidationRequired" data-f-element-name="__field_232331" data-f-type="selection">
+    <label for="cbd2dfab-b5ea-46b2-bc60-d20b101c1c57" class="Form__Element__Caption">省份 *</label>
+    <select name="__field_232331" id="cbd2dfab-b5ea-46b2-bc60-d20b101c1c57" required="" aria-required="true" data-f-datainput="" aria-describedby="__field_232331_desc" aria-invalid="false">
+        <option disabled="disabled" selected="selected" value="">请选择</option>
+        
+        <option value="Anhui" data-f-datainput="">安徽</option>
+        
+        <option value="Beijing" data-f-datainput="">北京</option>
+        
+        <option value="Chongqing" data-f-datainput="">重庆</option>
+        
+        <option value="Fujian" data-f-datainput="">福建</option>
+        
+        <option value="Gansu" data-f-datainput="">甘肃</option>
+        
+        <option value="Guangdong" data-f-datainput="">广东</option>
+        
+        <option value="Guangxi" data-f-datainput="">广西</option>
+        
+        <option value="Guizhou" data-f-datainput="">贵州</option>
+        
+        <option value="Hainan" data-f-datainput="">海南</option>
+        
+        <option value="Hebei" data-f-datainput="">河北</option>
+        
+        <option value="Heilongjiang" data-f-datainput="">黑龙江</option>
+        
+        <option value="Henan" data-f-datainput="">河南</option>
+        
+        <option value="Hubei" data-f-datainput="">湖北</option>
+        
+        <option value="Hunan" data-f-datainput="">湖南</option>
+        
+        <option value="Inner Mongolia" data-f-datainput="">内蒙古</option>
+        
+        <option value="Jiangsu" data-f-datainput="">江苏</option>
+        
+        <option value="Jiangxi" data-f-datainput="">江西</option>
+        
+        <option value="Jilin" data-f-datainput="">吉林</option>
+        
+        <option value="Liaoning" data-f-datainput="">辽宁</option>
+        
+        <option value="Ningxia" data-f-datainput="">宁夏</option>
+        
+        <option value="Qinghai" data-f-datainput="">青海</option>
+        
+        <option value="Shandong" data-f-datainput="">山东</option>
+        
+        <option value="Shanghai" data-f-datainput="">上海</option>
+        
+        <option value="Shanxi" data-f-datainput="">山西</option>
+        
+        <option value="Shaanxi" data-f-datainput="">陕西</option>
+        
+        <option value="Sichuan" data-f-datainput="">四川</option>
+        
+        <option value="Tianjin" data-f-datainput="">天津</option>
+        
+        <option value="Tibet (Xizang)" data-f-datainput="">西藏</option>
+        
+        <option value="Xinjiang" data-f-datainput="">新疆</option>
+        
+        <option value="Yunnan" data-f-datainput="">云南</option>
+        
+        <option value="Zhejiang" data-f-datainput="">浙江</option>
+        
+        <option value="Hongkong" data-f-datainput="">香港</option>
+        
+        <option value="Macao" data-f-datainput="">澳门</option>
+        
+        <option value="Taiwan" data-f-datainput="">台湾</option>
+        
+    </select>
+    <span class="Form__Element__ValidationError" data-f-linked-name="__field_232331" data-f-validationerror="" id="__field_232331_desc" style="display:none"></span>
+</div>
+
+<input name="__field_257300" id="b98922f0-9632-4106-a3e7-81ed1310cde2" type="hidden" value="China" class="Form__Element FormHidden FormHideInSummarized" data-f-type="hidden">
+
+
+<input name="__field_232333" id="25c61edf-a3ed-462c-9784-174abc2b705b" type="hidden" value="" class="Form__Element FormHidden FormHideInSummarized" data-f-type="hidden">
+
+
+<input name="__field_232334" id="da235111-04c6-491e-a2ea-d4acdbf5db38" type="hidden" value="CN Website" class="Form__Element FormHidden FormHideInSummarized" data-f-type="hidden">
+<div aria-invalid="false" aria-required="true" class="Form__Element FormChoice ValidationRequired" data-f-element-name="__field_232335" data-f-type="choice" id="f05d593b-47d1-4538-b4c1-c042d8c4e2b8" required="">
+<fieldset aria-describedby="__field_232335_desc">
+    
+
+    <label>
+        
+        <input type="checkbox" name="__field_232335" value="我接受耐特菲姆隐私条款*" class="FormChoice__Input FormChoice__Input--Checkbox" data-f-datainput="">
+        我接受耐特菲姆隐私条款*</label>
+
+    
+</fieldset>
+    <span class="Form__Element__ValidationError" data-f-linked-name="__field_232335" data-f-validationerror="" id="__field_232335_desc" style="display:none"></span>
+
+</div><div aria-invalid="false" class="Form__Element FormChoice" data-f-element-name="__field_232336" data-f-type="choice" id="d42b6628-64ef-4e3c-8c8d-ea5e727444f4">
+<fieldset aria-describedby="__field_232336_desc">
+    
+
+    <label>
+        
+        <input type="checkbox" name="__field_232336" value="1" class="FormChoice__Input FormChoice__Input--Checkbox" data-f-datainput="">
+        我愿意接收来自耐特菲姆的相关动态更新</label>
+
+    
+</fieldset>
+    <span class="Form__Element__ValidationError" data-f-linked-name="__field_232336" data-f-validationerror="" id="__field_232336_desc" style="display:none"></span>
+
+</div>
+
+<button id="d526d6a5-8e59-4749-a2dc-ad36f606e117" name="submit" type="submit" value="d526d6a5-8e59-4749-a2dc-ad36f606e117" data-f-is-finalized="false" data-f-is-progressive-submit="true" data-f-type="submitbutton" data-f-element-name="__field_232338" class="Form__Element FormExcludeDataRebind FormSubmitButton">
+        点击下载
+    
+</button>
+
+
+<input name="__field_256625" id="87602f25-88d2-4f86-bb7d-2f0a463d1d12" type="hidden" value="1" class="Form__Element FormHidden FormHideInSummarized" data-f-type="hidden">
+
+
+<input name="__field_256626" id="af864944-aba5-47b9-98fe-726acfc9ce59" type="hidden" value="subscriber" class="Form__Element FormHidden FormHideInSummarized" data-f-type="hidden">
+
+
+<input name="__field_256627" id="b8c2e79d-c21e-4645-9e6e-1a1fda25c70d" type="hidden" value="" class="Form__Element FormHidden FormHideInSummarized" data-f-type="hidden">
+
+
+<input name="__field_256628" id="eb69821b-182d-4bee-b36b-56bb929b0868" type="hidden" value="" class="Form__Element FormHidden FormHideInSummarized" data-f-type="hidden">
+
+
+<input name="__field_256629" id="7d38e195-3800-4117-84f9-3b76143d2525" type="hidden" value="" class="Form__Element FormHidden FormHideInSummarized" data-f-type="hidden">
+
+
+<input name="__field_256630" id="13571b9e-b39f-48ae-ae06-242ad49b74f9" type="hidden" value="" class="Form__Element FormHidden FormHideInSummarized" data-f-type="hidden">
+
+
+<input name="__field_256631" id="d93acfd6-7879-4119-90c3-ee73c530a6c2" type="hidden" value="" class="Form__Element FormHidden FormHideInSummarized" data-f-type="hidden">
+
+        </section>
+
+        
+    </div>
+    
+    
+
+    </form>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+</div></div>
+    </div>
+
+    <script type="text/javascript" src="static/js/WebResource1.js"></script>
+
+
+    <script data-cookieconsent="ignore" src='static/js/jquery.js'></script>
+
+    <script data-cookieconsent="ignore" src='static/js/vendor-scripts.js'></script>
+
+
+    
+    <script nomodule="" defer="" src="https://www.netafim.cn/scripts/legacy"></script>
+
+
+    <link rel="preload" as="font" crossorigin="anonymous" href="https://www.netafim.cn/dist/netafim/corporate/fonts/roboto-v27-latin-300.woff2"><link rel="preload" as="font" crossorigin="anonymous" href="https://www.netafim.cn/dist/netafim/corporate/fonts/roboto-v27-latin-regular.woff2">
+<link rel="stylesheet" href="static/css/vendor.b674c178b0e14c18b9cf.bundle.css">
+<script type="module" src="static/js/vendor.5f7a2cbe38058693cbbd.js"></script><script type="module" src="static/js/basic.e1aa2d1270758f89be8a.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+c-legacy-browser__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--brand__spacing--large) 0 var(--brand__spacing);
+    --brand__img--height: 85px;
+    --brand__img--width: auto
+}
+
+@media (min-width:46.25em) {
+    .c-legacy-browser__list {
+        --brand__img--height: 120px
+    }
+}
+
+.c-legacy-browser__list-item {
+    margin: 0 var(--brand__spacing--small)
+}
+
+.c-legacy-browser__link {
+    display: block;
+    transform: var(--legacy-browser__link--transform);
+    transition: transform .3s ease-in-out
+}
+
+    .c-legacy-browser__link:hover:not(.disabled,:disabled), .c-legacy-browser__link:focus-within:not(.disabled,:disabled) {
+        --legacy-browser__link--transform: scale(1.1)
+    }
